@@ -1,0 +1,53 @@
+spring:
+  application:
+    name: kenect-labs-api
+  datasource:
+    url: jdbc:h2:mem:testdb
+    driver-class-name: org.h2.Driver
+    username: sa
+    password:
+    platform: h2
+    h2:
+      console:
+        enabled: true
+        path: /h2-console
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    database-platform: org.hibernate.dialect.H2Dialect
+
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+  cache:
+    type: redis
+    redis:
+      time-to-live: 3h
+
+springdoc:
+  api-docs:
+    path: /v3/api-docs
+    enabled: true
+  swagger-ui:
+    enabled: true
+
+logging:
+  level:
+    org.springdoc: DEBUG
+    org.springframework.security: DEBUG
+    io.github.resilience4j.circuitbreaker: DEBUG
+    io.github.resilience4j.retry: DEBUG
+
+jwt:
+  secret: eW91ci1zZWN1cmUtc2VjcmV0LXNob3VsZC1iZS1kYW9vNS4uLiA=
+  expiration: 3600000
+
+api:
+  sources:
+    kenect-labs:
+      name: "KENECT_LABS"
+      url: "https://k-messages-api.herokuapp.com/api/v1"
+      token: "J7ybt6jv6pdJ4gyQP9gNonsY"
+
